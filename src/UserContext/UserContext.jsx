@@ -8,6 +8,7 @@ function UserContext({ children }) {
     const [dark, setDark] = useState(false);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [updateState, setUpdateState] = useState(false);
     const auth = getAuth(app);
     const userinfo = { dark, setDark, user, setUser, loading, setLoading };
 

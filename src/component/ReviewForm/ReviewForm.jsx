@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { AuthContext } from '../../UserContext/UserContext';
 
-function ReviewForm({ title, setUpdateState }) {
-    const { user } = useContext(AuthContext);
+function ReviewForm({ title }) {
+    const { user, updateState, setUpdateState } = useContext(AuthContext);
     function handleReview(e) {
         e.preventDefault();
         const form = e.target;
@@ -30,7 +30,6 @@ function ReviewForm({ title, setUpdateState }) {
             .catch((error) => {
                 console.error('Error:', error);
             });
-    }
 }
 return (
     <div>
