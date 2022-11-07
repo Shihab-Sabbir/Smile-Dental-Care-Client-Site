@@ -1,0 +1,27 @@
+.active-class {
+    font-weight: bolder;
+    color: red;
+}
+
+.non-active-class {
+    font-weight: normal;
+    color: black;
+}
+.dark .non-active-class {
+    font-weight: normal;
+    color: white;
+}
+.dark .non-active-class-drop-down {
+    font-weight: normal;
+    color: white;
+}
+
+.non-active-class-drop-down {
+    font-weight: normal;
+    color: black;
+}
+
+.non-active-class-sm {
+    font-weight: normal;
+    color: black;
+}
