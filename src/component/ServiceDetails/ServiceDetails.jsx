@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useEffect } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../UserContext/UserContext";
 import Review from "../Review/Review";
 import ReviewForm from "../ReviewForm/ReviewForm";
@@ -8,7 +8,7 @@ import ReviewForm from "../ReviewForm/ReviewForm";
 const ServiceDetails = () => {
     const [reviews, setReviews] = useState([])
     const service = useLoaderData();
-    const { updateState } = useContext(AuthContext);
+    const { user, updateState } = useContext(AuthContext);
     const { title, price, clinicName, description1, serviceId, description3, descriptionHeader, displayImage, InsideImage, treatmentTime } = service;
     useEffect(() => {
         fetch(`http://localhost:5000/review/${serviceId}`).then(res => res.json()).then(data => setReviews(data)).catch(err => console.log(err))
@@ -134,12 +134,14 @@ const ServiceDetails = () => {
                     </div>
                 </div>
             </div>
-            {reviews?.map(review => <Review key={review._id} review={review} />)}
-            <p>No view Yet !</p>
-            <p>Please Login to add review</p>
-            {/* The button to open modal */}
-            <label htmlFor="my-modal-3" className="btn-link">add review</label>
+            <div className="lg:ml-[220px]">
+                <p className="p-5 font-bold text-2xl lg:text-3xl">Reviews</p>
+                {reviews?.length === 0 && <p className="px-5 text-start uppercase font-semibold">No view Yet !</p>}
+                {!user?.uid && <p className="font-semibold px-5">Do you want to add review ?<br /> Please <Link to='/login' className="font-bold uppercase text-blue-500">Login</Link> First !</p>}
+                {user?.uid && <label htmlFor="my-modal-3" className="m-5 btn text-xs">Please , add review</label>}
+           </div>
             <ReviewForm title={title} serviceId={serviceId} />
+            {reviews?.map(review => <Review key={review._id} review={review} />)}
         </div>
     );
 };
