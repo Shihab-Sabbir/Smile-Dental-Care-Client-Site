@@ -59,6 +59,13 @@ function Header() {
                         Home
                     </NavLink>
                     <NavLink
+                        to="/review"
+                        end
+                        className={({ isActive }) => (isActive ? "active-class" : "non-active-class dark:non-active-class")}
+                    >
+                        Reviews
+                    </NavLink>
+                    <NavLink
                         to="/login"
                         end
                         className={({ isActive }) => (isActive ? "active-class" : "non-active-class dark:non-active-class")}
