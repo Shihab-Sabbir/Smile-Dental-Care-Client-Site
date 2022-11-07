@@ -5,7 +5,7 @@ import ReviewForm from "../ReviewForm/ReviewForm";
 
 const ServiceDetails = () => {
     const service = useLoaderData();
-    const { title, price, clinicName, description1, description2, description3, descriptionHeader, displayImage, InsideImage, treatmentTime } = service;
+    const { title, price, clinicName, description1, serviceId, description3, descriptionHeader, displayImage, InsideImage, treatmentTime } = service;
     return (
         <div>
             <div className="md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4">
@@ -131,7 +131,7 @@ const ServiceDetails = () => {
             <p>Please Login to add review</p>
             {/* The button to open modal */}
             <label htmlFor="my-modal-3" className="btn-link">add review</label>
-            <ReviewForm title={title} />
+            <ReviewForm title={title} serviceId={serviceId} />
         </div>
     );
 };
