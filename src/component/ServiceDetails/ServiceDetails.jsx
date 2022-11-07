@@ -134,7 +134,7 @@ const ServiceDetails = () => {
                     </div>
                 </div>
             </div>
-            <Review />
+            {reviews?.map(review => <Review key={review._id} review={review} />)}
             <p>No view Yet !</p>
             <p>Please Login to add review</p>
             {/* The button to open modal */}
