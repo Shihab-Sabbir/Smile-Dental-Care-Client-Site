@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../UserContext/UserContext";
 import Review from "../Review/Review";
 import ReviewForm from "../ReviewForm/ReviewForm";
 
 const ServiceDetails = () => {
+    const [reviews, setReviews] = useState([])
     const service = useLoaderData();
+    const { updateState } = useContext(AuthContext);
     const { title, price, clinicName, description1, serviceId, description3, descriptionHeader, displayImage, InsideImage, treatmentTime } = service;
+    useEffect(() => {
+        fetch(`http://localhost:5000/review/${serviceId}`).then(res => res.json()).then(data => setReviews(data)).catch(err => console.log(err))
+    }, [updateState])
+
     return (
         <div>
             <div className="md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4">
