@@ -10,7 +10,8 @@ function ReviewForm({ title, serviceId }) {
         const comment = form.comment.value;
         const rating = form.rating.value;
         const time = new Date().valueOf();
-        const review = { Reviewtitle, comment, rating, user: user?.uid, time, serviceId: serviceId };
+        const review = { Reviewtitle, comment, rating, user: user?.uid, userName: user?.displayName, userEmail: user?.email, userImg: user?.photoURL, time, serviceId: serviceId };
+        console.log(review)
         fetch(`http://localhost:5000/review`, {
             method: 'POST',
             headers: {
