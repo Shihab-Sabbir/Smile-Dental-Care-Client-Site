@@ -141,7 +141,7 @@ const ServiceDetails = () => {
                 {user?.uid && <label htmlFor="my-modal-3" className="m-5 btn text-xs">Please , add review</label>}
            </div>
             <ReviewForm title={title} serviceId={serviceId} />
-            {reviews?.map(review => <Review key={review._id} review={review} />)}
+            {reviews?.map(review => <Review key={review._id} InsideImage={InsideImage} review={review} />)}
         </div>
     );
 };

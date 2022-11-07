@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { AuthContext } from '../../UserContext/UserContext';
 
-function ReviewForm({ title, serviceId }) {
+function ReviewForm({ title, serviceId, InsideImage }) {
     const { user, updateState, setUpdateState } = useContext(AuthContext);
     function handleReview(e) {
         e.preventDefault();
@@ -10,7 +10,7 @@ function ReviewForm({ title, serviceId }) {
         const comment = form.comment.value;
         const rating = form.rating.value;
         const time = new Date().valueOf();
-        const review = { Reviewtitle, comment, rating, user: user?.uid, userName: user?.displayName, userEmail: user?.email, userImg: user?.photoURL, time, serviceId: serviceId };
+        const review = { Reviewtitle, comment, rating, user: user?.uid, userName: user?.displayName, userEmail: user?.email, userImg: user?.photoURL, time, serviceId: serviceId, serviceName: title, serviceImage: InsideImage };
         console.log(review)
         fetch(`http://localhost:5000/review`, {
             method: 'POST',
@@ -36,11 +36,11 @@ function ReviewForm({ title, serviceId }) {
             <input type="checkbox" id="my-modal-3" className="modal-toggle" />
             <div className="modal">
                 <form className="modal-box relative" onSubmit={handleReview}>
-                    <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2" onClick={() => setUpdateState(!updateState)}>✕</label>
                     <h3 className="text-lg font-bold">Review on {title}</h3>
-                    <input type="text" name="title" id="" className="my-4 w-full input border-0 border-b-2" placeholder='Review title' />
-                    <textarea name='comment' className="textarea textarea-bordered rounded-none w-full" placeholder="Comment"></textarea>
-                    <select name='rating' className="select w-full border-0 rounded-none px-0 my-1">
+                    <input required type="text" name="title" id="" className="my-4 w-full input border-0 border-b-2" placeholder='Review title' />
+                    <textarea required name='comment' className="textarea textarea-bordered rounded-none w-full" placeholder="Comment"></textarea>
+                    <select required name='rating' className="select w-full border-0 rounded-none px-0 my-1">
                         <option disabled selected>RATING</option>
                         <option className='text-3xl text-amber-400 ' value='5'>* * * * *</option>
                         <option className='text-3xl text-amber-400 ' value='4'>* * * *</option>

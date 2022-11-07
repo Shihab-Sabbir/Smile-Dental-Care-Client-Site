@@ -10,7 +10,7 @@ function UserContext({ children }) {
     const [loading, setLoading] = useState(true);
     const [updateState, setUpdateState] = useState(false);
     const auth = getAuth(app);
-    const userinfo = { dark, setDark, user, setUser, loading, setLoading };
+    const userinfo = { dark, setDark, user, setUser, loading, setLoading, updateState, setUpdateState };
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
