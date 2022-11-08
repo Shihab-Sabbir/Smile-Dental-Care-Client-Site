@@ -79,7 +79,7 @@ function MyReview() {
                                         {new Date(review.time).getHours() + ":" + new Date(review.time).getMinutes() + ", " + new Date(review.time).toDateString()}
                                     </td>
                                     <td className="py-4 px-2">
-                                        <label htmlFor="my-modal-2" className="text-xs">Edit</label>
+                                        <label htmlFor="my-modal-2" className="text-sm cursor-pointer text-blue-600">Edit</label>
                                         <EditReview tile={review.serviceName} Reviewtitle={review.Reviewtitle} comment={review.comment} rating={review.rating} id={review._id} />
                                     </td>
                                 </tr>

@@ -16,7 +16,7 @@ function Logout() {
             if (user?.uid) {
                 setUser(null);
                 toast.success('Logout Successful');
-                navigate('/');
+                navigate('/login');
             }
             else {
                 toast.error('No user Logged in !')

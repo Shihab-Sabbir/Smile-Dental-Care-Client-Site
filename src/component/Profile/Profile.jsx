@@ -10,8 +10,6 @@ function Profile() {
         <div className='flex justify-center items-center lg:items-start pt-3 lg:pt-8 lg:min-h-screen dark:bg-slate-500'>
             {loading ||
                 <div className='flex lg:flex-row flex-col items-center justify-evenly gap-10'>
-                    {!dark ? <img src={profileAnim} alt="" className='w-[15%] lg:block hidden' /> :
-                        <img src={profileAnimDark} alt="" className='w-[15%] lg:block hidden' />}
                     <div className="max-w-md p-8 sm:flex sm:space-x-6 dark:bg-gray-900 dark:text-gray-100">
                         <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-32 sm:w-32 sm:mb-0">
                             <img src={user?.photoURL} alt="no image" className="object-cover object-center w-full h-full rounded dark:bg-gray-500" />
@@ -19,7 +17,6 @@ function Profile() {
                         <div className="flex flex-col space-y-4">
                             <div>
                                 <h2 className="text-xl font-semibold uppercase">{user?.displayName || 'No Name found'}</h2>
-                                <span className="text-sm dark:text-gray-400">General manager</span>
                             </div>
                             <div className="space-y-1">
                                 <span className="flex items-center space-x-2">

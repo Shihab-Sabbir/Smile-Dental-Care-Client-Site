@@ -5,7 +5,7 @@ import { AuthContext } from '../../UserContext/UserContext';
 import { Link, NavLink } from 'react-router-dom';
 import './Header.css'
 function Header() {
-    const { dark, setDark } = useContext(AuthContext);
+    const { dark, setDark, user } = useContext(AuthContext);
     return (
         <div>
             <Navbar
@@ -23,28 +23,30 @@ function Header() {
                     </span>
                 </Navbar.Brand>
                 <div className="flex gap-2 xl:gap-4 items-center md:order-2">
-                    <Dropdown
+                    {user?.uid && <Dropdown
                         arrowIcon={false}
                         inline={true}
-                        label={<Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded={true} />}
+                        label={<Avatar alt="User settings" img={user?.photoURL} rounded={true} />}
                     >
                         <Dropdown.Header>
                             <span className="block text-sm">
-                                Bonnie Green
+                                {user?.displayName}
                             </span>
                             <span className="block truncate text-sm font-medium">
-                                name@flowbite.com
+                                {user?.email}
                             </span>
                         </Dropdown.Header>
-                        <Dropdown.Item>
-                            <Link to='/profile'>
+                        <Link to='/profile'>
+                            <Dropdown.Item>
                                 Profile
-                            </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                            Login
-                        </Dropdown.Item>
-                    </Dropdown>
+                            </Dropdown.Item>
+                        </Link>
+                        <Link to='/login'>
+                            <Dropdown.Item>
+                                {user?.uid ? "Logout" : "Login"}
+                            </Dropdown.Item>
+                        </Link>
+                    </Dropdown>}
                     <div className='border-2 p-1 rounded-md hidden sm:block'>
                         {dark ? <MdOutlineDarkMode className='text-xl text-white  cursor-pointer' title='click to light mode' onClick={() => setDark(!dark)} /> : <MdOutlineLightMode className='text-xl cursor-pointer' title='click to light mode' onClick={() => setDark(!dark)} />}
                     </div>
@@ -77,7 +79,7 @@ function Header() {
                         end
                         className={({ isActive }) => (isActive ? "active-class" : "non-active-class dark:non-active-class")}
                     >
-                        Login
+                        {user?.uid ? "Logout" : "Login"}
                     </NavLink>
                     <Navbar.Link>
                         <div className='absolute top-[69px] right-[12px] sm:hidden border-2 p-1 rounded-md'>
