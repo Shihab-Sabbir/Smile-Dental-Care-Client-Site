@@ -20,6 +20,27 @@ function Login() {
     const GoogleProvider = new GoogleAuthProvider();
     const GitHubProvider = new GithubAuthProvider();
     const userEmail = useRef();
+
+    const jwtToken = (user) => {
+        const uid = user?.uid;
+        fetch('http://localhost:5000/jwt', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ uid }),
+        }).then(res => res.json()).then(data => {
+            if (data.token) {
+                localStorage.setItem('assignment-11_Token', data.token)
+                setUser(user);
+                toast.success('Successfully Login');
+                setError('');
+                navigate(from, { replace: true });
+            }
+
+        })
+    }
+
     const handleFormSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -30,10 +51,7 @@ function Login() {
             .then((userCredential) => {
                 const user = userCredential.user;
                 setLoading(true);
-                setUser(user);
-                toast.success('Successfully Login');
-                setError('');
-                navigate(from, { replace: true });
+                jwtToken(user)
             })
             .catch((error) => {
                 const errorMessage = error.message;
@@ -46,9 +64,7 @@ function Login() {
         signInWithPopup(auth, provider)
             .then((result) => {
                 const user = result.user;
-                setUser(user);
-                toast.success('Successfully Login');
-                navigate(from, { replace: true });
+                jwtToken(user)
             }).catch((error) => {
                 const errorMessage = error.message;
                 toast.error(errorMessage)

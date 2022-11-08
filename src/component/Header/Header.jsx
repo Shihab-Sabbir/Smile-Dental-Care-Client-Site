@@ -23,7 +23,7 @@ function Header() {
                     </span>
                 </Navbar.Brand>
                 <div className="flex gap-2 xl:gap-4 items-center md:order-2">
-                    {user?.uid && <Dropdown
+                    {user?.uid != null && <Dropdown
                         arrowIcon={false}
                         inline={true}
                         label={<Avatar alt="User settings" img={user?.photoURL} rounded={true} />}

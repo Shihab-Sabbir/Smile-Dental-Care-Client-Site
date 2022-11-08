@@ -13,7 +13,9 @@ function MyReview() {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('assignment-11_Token')}`
             }
-        }).then(res => res.json()).then(data => setReviews(data));
+        }).then(res => {
+            return res.json()
+        }).then(data => setReviews(data));
     }, [updateState, loading])
 
     const handleDelete = (id) => {
@@ -22,7 +24,7 @@ function MyReview() {
             fetch(`http://localhost:5000/review/${id}`, {
                 method: 'DELETE'
             }).then(res => res.json()).then(data => {
-                if (data.deletedCount > 0) { console.log(data); window.alert('succesfully deleted'); setUpdateState(!updateState); }
+                if (data.deletedCount > 0) { window.alert('succesfully deleted'); setUpdateState(!updateState); }
             });
         }
     }

@@ -16,6 +16,7 @@ function Logout() {
             if (user?.uid) {
                 setUser(null);
                 toast.success('Logout Successful');
+                localStorage.removeItem('assignment-11_Token')
                 navigate('/login');
             }
             else {
