@@ -14,14 +14,14 @@ function MyReview() {
             }
         }).then(res => res.json()).then(data => setReviews(data));
     }, [updateState, loading])
+
     const handleDelete = (id) => {
-        const confirm = window.confirm('Are You Sure Deleting This Item ?');
+        const confirm = window.confirm('Are You Sure Deleting This Review ?');
         if (confirm) {
-            fetch(`https://genius-car-server-psi-woad.vercel.app/orders/${id}`, {
+            fetch(`http://localhost:5000/review/${id}`, {
                 method: 'DELETE'
             }).then(res => res.json()).then(data => {
-                console.log(data);
-                setUpdateState(!updateState);
+                if (data.deletedCount > 0) { console.log(data); window.alert('succesfully deleted'); setUpdateState(!updateState); }
             });
         }
     }
@@ -72,7 +72,7 @@ function MyReview() {
                                     <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
                                         <p className='flex gap-2 justify-center items-center'>
                                             {review.rating} <AiFillStar className='text-amber-500' />
-                                       </p>
+                                        </p>
                                     </td>
                                     <td className="py-4 px-6">
                                         {new Date(review.time).getHours() + ":" + new Date(review.time).getMinutes() + ", " + new Date(review.time).toDateString()}
