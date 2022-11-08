@@ -5,9 +5,11 @@ import { useEffect } from 'react';
 import { AuthContext } from '../../UserContext/UserContext';
 import { AiFillStar } from 'react-icons/ai'
 import EditReview from '../EditReview/EditReview';
+import { useNavigate } from 'react-router-dom';
 function MyReview() {
     const [reviews, setReviews] = useState([]);
     const { user, loading, updateState, setUpdateState } = useContext(AuthContext);
+    const navigate = useNavigate()
     useEffect(() => {
         fetch(`http://localhost:5000/review/user/${user?.uid}`, {
             headers: {
@@ -28,6 +30,7 @@ function MyReview() {
             });
         }
     }
+
     return (
         <div className='w-full lg:w-[1176px] p-2 mx-auto'>
             <div className="overflow-x-auto relative shadow-md sm:rounded-lg">

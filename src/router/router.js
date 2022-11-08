@@ -10,6 +10,7 @@ import Register from "../component/Register/Register";
 import ServiceDetails from "../component/ServiceDetails/ServiceDetails";
 import Services from "../component/Services/Services";
 import Layout from "../Layout/Layout";
+import ProtectedRoute from "./ProtectedRoute";
 
 export const router = createBrowserRouter([
     {
@@ -21,7 +22,7 @@ export const router = createBrowserRouter([
             { path: '/register', element: <Register /> },
             { path: '/addservice', element: <AddService /> },
             { path: '/profile', element: <Profile /> },
-            { path: '/review', element: <MyReview /> },
+            { path: '/review', element: <ProtectedRoute><MyReview /></ProtectedRoute> },
             { path: '/service/details/:id', loader: async ({ params }) => fetch(`http://localhost:5000/services/${params.id}`), element: <ServiceDetails /> },
         ]
     }
