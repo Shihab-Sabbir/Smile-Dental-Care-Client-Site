@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { AuthContext } from '../../UserContext/UserContext';
 import { AiFillStar } from 'react-icons/ai'
+import EditReview from '../EditReview/EditReview';
 function MyReview() {
     const [reviews, setReviews] = useState([]);
     const { user, loading, updateState, setUpdateState } = useContext(AuthContext);
@@ -78,7 +79,8 @@ function MyReview() {
                                         {new Date(review.time).getHours() + ":" + new Date(review.time).getMinutes() + ", " + new Date(review.time).toDateString()}
                                     </td>
                                     <td className="py-4 px-2">
-                                        Edit
+                                        <label htmlFor="my-modal-2" className="text-xs">Edit</label>
+                                        <EditReview tile={review.serviceName} Reviewtitle={review.Reviewtitle} comment={review.comment} rating={review.rating} id={review._id} />
                                     </td>
                                 </tr>
                             )
