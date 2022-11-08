@@ -9,11 +9,10 @@ const ServiceDetails = () => {
     const [reviews, setReviews] = useState([])
     const service = useLoaderData();
     const { user, updateState } = useContext(AuthContext);
-    const { title, price, clinicName, description1, serviceId, description3, descriptionHeader, displayImage, InsideImage, treatmentTime } = service;
+    const { title, price, clinicName, description1, serviceId, description2, descriptionHeader, displayImage, InsideImage, treatmentTime } = service;
     useEffect(() => {
         fetch(`http://localhost:5000/review/${serviceId}`).then(res => res.json()).then(data => setReviews(data)).catch(err => console.log(err))
     }, [updateState])
-
     return (
         <div>
             <div className="md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4">
@@ -24,7 +23,7 @@ const ServiceDetails = () => {
                 <div className="md:hidden">
                     <img className="w-full" alt="" src={displayImage} />
                     <div className="border-b border-gray-200 pb-6 mt-3">
-                        <p className="text-sm leading-none text-gray-600">{clinicName}</p>
+                        <p className="text-sm leading-none text-gray-600">Dr. Eddie Harsini</p>
                         <h1
                             className="
 							lg:text-2xl
@@ -72,7 +71,7 @@ const ServiceDetails = () => {
                 </div>
                 <div className="xl:w-2/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-6">
                     <div className="border-b border-gray-200 pb-6 md:block hidden">
-                        <p className="text-sm leading-none text-gray-600">{clinicName}</p>
+                        <p className="text-sm leading-none text-gray-600">Dr. Eddie Harsini</p>
                         <h1
                             className="
 							lg:text-2xl
@@ -130,7 +129,7 @@ const ServiceDetails = () => {
                     <div>
                         <p className="text-base lg:leading-relaxed leading-normal text-gray-600 mt-7 text-justify">{description1}</p>
                         <p className="text-lg font-bold leading-4 mt-7 lg:mt-10 text-gray-600">{descriptionHeader}</p>
-                        <p className="text-base lg:leading-relaxed leading-normal  text-gray-600 mt-7 text-justify">{description3}</p>
+                        <p className="text-base lg:leading-relaxed leading-normal  text-gray-600 mt-7 text-justify">{description2}</p>
                     </div>
                 </div>
             </div>

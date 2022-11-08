@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 function Services() {
     const [services, setServices] = useState([]);
@@ -28,7 +29,7 @@ function Services() {
                                                 </svg>
                                             </div>
                                             <div className="bg-yellow-200 py-1.5 px-6 rounded-full">
-                                                <p className="text-xs text-yellow-500">Details</p>
+                                                <Link to={`/service/details/${service?._id}`} className="text-xs text-yellow-500">Details</Link>
                                             </div>
                                         </div>
                                         <div className="p-4">
