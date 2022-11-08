@@ -8,8 +8,7 @@ function Services() {
     }, [])
 
     return (
-        <div className="bg-gray-100 ">
-
+        <div className="bg-gray-100 py-[20px]">
             <div className="w-full lg:w-[1200px] mx-auto container">
                 <div className='flex justify-start items-center flex-col'>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -28,14 +27,13 @@ function Services() {
                                                     <path d="M9 4h6a2 2 0 0 1 2 2v14l-5-3l-5 3v-14a2 2 0 0 1 2 -2" />
                                                 </svg>
                                             </div>
-                                            <div className="bg-yellow-200 py-1.5 px-6 rounded-full">
-                                                <Link to={`/service/details/${service?._id}`} className="text-xs text-yellow-500">Details</Link>
-                                            </div>
+                                            <Link to={`/service/details/${service?._id}`} className="bg-yellow-200 py-1.5 px-6 rounded-full">
+                                                <p className="text-xs text-yellow-500">Details</p>
+                                            </Link>
                                         </div>
                                         <div className="p-4">
-                                            <div className="flex items-center">
+                                            <div className="flex items-center min-h-[56px]">
                                                 <h2 className="text-lg font-semibold">{service?.title}</h2>
-                                                <p className="text-xs text-gray-600 pl-5">4 days ago</p>
                                             </div>
                                             <p className="text-xs text-gray-600 mt-2">{service?.description1?.length > 100 ? service?.description1?.slice(0, 100) + "..." : service?.description1}</p>
                                             <div className="flex mt-4">

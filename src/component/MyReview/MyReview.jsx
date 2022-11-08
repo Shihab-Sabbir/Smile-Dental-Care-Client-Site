@@ -86,7 +86,7 @@ function MyReview() {
                             )
                         }
                     </tbody>
-                </table> : <p className='text-center uppercase font-bold py-[150px]'>No orders found !</p>}
+                </table> : <p className='text-center uppercase font-bold py-[150px]'>No Review found !</p>}
             </div>
         </div>
     )
