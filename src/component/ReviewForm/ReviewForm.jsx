@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { AuthContext } from '../../UserContext/UserContext';
 
-function ReviewForm({ title, serviceId, InsideImage }) {
+function ReviewForm({ title, serviceId, insideImage }) {
     const { user, updateState, setUpdateState } = useContext(AuthContext);
     function handleReview(e) {
         e.preventDefault();
@@ -10,8 +10,11 @@ function ReviewForm({ title, serviceId, InsideImage }) {
         const comment = form.comment.value;
         const rating = form.rating.value;
         const time = new Date().valueOf();
-        const review = { Reviewtitle, comment, rating, user: user?.uid, userName: user?.displayName, userEmail: user?.email, userImg: user?.photoURL, time, serviceId: serviceId, serviceName: title, serviceImage: InsideImage };
-        console.log(review)
+        const review = { Reviewtitle, comment, rating, user: user?.uid, userName: user?.displayName, userEmail: user?.email, userImg: user?.photoURL, time, serviceId: serviceId, serviceName: title, serviceImage: insideImage };
+        if (rating == 0) {
+            window.alert("Please select a rating");
+            return;
+        }
         fetch(`http://localhost:5000/review`, {
             method: 'POST',
             headers: {
@@ -40,8 +43,8 @@ function ReviewForm({ title, serviceId, InsideImage }) {
                     <h3 className="text-lg font-bold">Review on {title}</h3>
                     <input required type="text" name="title" id="" className="my-4 w-full input border-0 border-b-2" placeholder='Review title' />
                     <textarea required name='comment' className="textarea textarea-bordered rounded-none w-full" placeholder="Comment"></textarea>
-                    <select required name='rating' className="select w-full border-0 rounded-none px-0 my-1">
-                        <option disabled selected>RATING</option>
+                    <select required name='rating' className="select w-full border-0 rounded-none px-0 my-1" defaultValue='0'>
+                        <option disabled value='0'>RATING</option>
                         <option className='text-3xl text-amber-400 ' value='5'>* * * * *</option>
                         <option className='text-3xl text-amber-400 ' value='4'>* * * *</option>
                         <option className='text-3xl text-amber-400' value='3'>* * *</option>

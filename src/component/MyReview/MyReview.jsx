@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { AuthContext } from '../../UserContext/UserContext';
-
+import { AiFillStar } from 'react-icons/ai'
 function MyReview() {
     const [reviews, setReviews] = useState([]);
     const { user, loading, updateState, setUpdateState } = useContext(AuthContext);
@@ -25,10 +25,6 @@ function MyReview() {
             });
         }
     }
-    let date;
-    let timeFormat;
-    console.log(reviews)
-    // const { Reviewtitle, comment, rating, userName, email, userImg, time } = review;
     return (
         <div className='w-full lg:w-[1176px] p-2 mx-auto'>
             <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
@@ -36,7 +32,7 @@ function MyReview() {
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" className="py-3  px-6 text-center">
-                                action
+
                             </th>
                             <th scope="col" className="py-3 px-6 text-center">
                                 Service
@@ -48,7 +44,7 @@ function MyReview() {
                                 Rating
                             </th>
                             <th scope="col" className="py-3 px-6 text-center">
-                                Date
+                                Post Date
                             </th>
                             <th scope="col" className="py-3 px-2 text-center">
                                 Action
@@ -64,16 +60,19 @@ function MyReview() {
                                     }}>
                                         Remove
                                     </td>
-                                    <td className="p-4 max-w-[150px] text-xs font-thin text-justify">
-                                        <img src={review.img} alt="" />
-                                        {review.comment}
-                                    </td>
-                                    <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
+                                    <td className="p-4 max-w-[150px] text-xs font-semibold text-center">
                                         {review.serviceName}
+                                        <img className='w-[100px] h-[70px] mt-1 shadow-lg rounded-lg mx-auto' src={review.serviceImage} alt="" />
+                                    </td>
+                                    <td className="py-4 px-6 font-thin text-justify max-w-[150px] text-gray-900 dark:text-white">
+                                        <p className='font-semibold'>{review.Reviewtitle}</p>
+                                        {review.comment}
                                     </td>
 
                                     <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
-                                        {review.rating} *
+                                        <p className='flex gap-2 justify-center items-center'>
+                                            {review.rating} <AiFillStar className='text-amber-500' />
+                                       </p>
                                     </td>
                                     <td className="py-4 px-6">
                                         {new Date(review.time).getHours() + ":" + new Date(review.time).getMinutes() + ", " + new Date(review.time).toDateString()}

@@ -140,8 +140,8 @@ const ServiceDetails = () => {
                 {!user?.uid && <p className="font-semibold px-5">Do you want to add review ?<br /> Please <Link to='/login' className="font-bold uppercase text-blue-500">Login</Link> First !</p>}
                 {user?.uid && <label htmlFor="my-modal-3" className="m-5 btn text-xs">Please , add review</label>}
            </div>
-            <ReviewForm title={title} serviceId={serviceId} />
-            {reviews?.map(review => <Review key={review._id} InsideImage={InsideImage} review={review} />)}
+            <ReviewForm title={title} serviceId={serviceId} insideImage={InsideImage} />
+            {reviews?.map(review => <Review key={review._id}  review={review} />)}
         </div>
     );
 };
