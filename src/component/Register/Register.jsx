@@ -6,12 +6,33 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../../UserContext/UserContext';
 import regAnim from '../../asset/register.gif'
 import regAnimDark from '../../asset/registerDark.gif'
+import { Helmet } from "react-helmet";
 function Register() {
     const auth = getAuth(app);
-    const { setUser, setLoading,dark } = useContext(AuthContext);
+    const { setUser, setLoading, dark } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
+
+    const jwtToken = (user) => {
+        const uid = user?.uid;
+        fetch(' https://assignment-11-five.vercel.app/jwt', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ uid }),
+        }).then(res => res.json()).then(data => {
+            if (data.token) {
+                localStorage.setItem('assignment-11_Token', data.token)
+                setUser(user);
+                toast.success('Successfully Login');
+                navigate(from, { replace: true });
+            }
+
+        })
+    }
+
     const handleFormSubmit = (e) => {
         e.preventDefault();
         setLoading(true); // new added , maybe needed to be removed
@@ -22,6 +43,7 @@ function Register() {
         const password = form.password.value;
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
+                jwtToken(auth.currentUser)
                 updateProfile(auth.currentUser, {
                     displayName: name, photoURL: photo
                 }).then(() => {
@@ -40,6 +62,9 @@ function Register() {
     }
     return (
         <div className='p-2 dark:bg-slate-500 flex justify-center items-start pt-3 lg:pt-8 min-h-screen'>
+            <Helmet>
+                <title>Register</title>
+            </Helmet>
             <div className='flex lg:flex-row flex-col items-center justify-evenly gap-10'>
                 <div>{!dark ? <img src={regAnim} alt="" /> : <img src={regAnimDark} alt="" />}</div>
                 <div className="w-full h-fit max-w-md p-8 space-y-3 rounded-xl bg-white bg-gradient-to-r dark:bg-gray-800 dark:text-gray-100 border dark:border-none">
@@ -62,14 +87,14 @@ function Register() {
                             <input required type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-2 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
                         </div>
                         <button className="block w-full p-3 text-center rounded-sm 
-                    bg-amber-500
-                    dark:text-gray-900 dark:bg-violet-400  bg-gradient-to-l" type='submit'>Sign up</button>
+                    bg-[#00ACBD]
+                    text-white bg-gradient-to-l" type='submit'>Sign up</button>
                     </form>
                     <p className="text-xs text-center sm:px-6 dark:text-gray-400">Don't have an account?
                         <Link rel="noopener noreferrer" to='/login' className="underline dark:text-gray-100 px-2 text-sm font-bold">Log in</Link>
                     </p>
                 </div>
-          </div>
+            </div>
         </div>
     )
 }

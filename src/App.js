@@ -8,7 +8,9 @@ function App() {
   const { dark } = useContext(AuthContext);
   return (
     <div className={dark ? 'dark' : ''}>
-      <RouterProvider router={router}></RouterProvider>
+      <RouterProvider router={router}>
+        
+      </RouterProvider>
     </div>
   )
 }

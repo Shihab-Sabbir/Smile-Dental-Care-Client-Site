@@ -5,12 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Toaster } from 'react-hot-toast';
 import UserContext from './UserContext/UserContext';
-
+import { PhotoProvider } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
     <UserContext>
-      <App />
+      <PhotoProvider>
+        <App />
+      </PhotoProvider>
       <Toaster />
     </UserContext>
   </React.StrictMode>

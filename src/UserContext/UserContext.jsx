@@ -2,7 +2,7 @@ import React, { createContext, useEffect } from 'react'
 import { useState } from 'react';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import app from '../firebase/firebase.config';
-
+import { Helmet } from "react-helmet";
 export const AuthContext = createContext();
 function UserContext({ children }) {
     const [dark, setDark] = useState(false);
@@ -26,6 +26,9 @@ function UserContext({ children }) {
 
     return (
         <AuthContext.Provider value={userinfo}>
+            <Helmet>
+                <title>Smile Well</title>
+            </Helmet>
             {children}
         </AuthContext.Provider>
     )

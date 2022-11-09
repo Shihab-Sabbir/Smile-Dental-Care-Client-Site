@@ -1,5 +1,6 @@
 import React from 'react'
 import addServiceHeader from '../../asset/images/addServiceHeader.png'
+import { Helmet } from "react-helmet";
 function AddService() {
     const handleServiceAdd = (e) => {
         e.preventDefault();
@@ -17,7 +18,7 @@ function AddService() {
         const serviceDetails = {
             title, serviceId, price, treatmentTime, successRate, description1, description2, descriptionHeader, displayImage, InsideImage
         };
-        fetch(`http://localhost:5000/add-service`, {
+        fetch(` https://assignment-11-five.vercel.app/add-service`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,6 +38,9 @@ function AddService() {
     }
     return (
         <div className='bg-gray-100'>
+            <Helmet>
+                <title>Add New Service</title>
+            </Helmet>
             <div className='w-full lg:w-[1176px] mx-auto p-2'>
                 <div>
                     <img src={addServiceHeader} className='min-w-full brightness-[80%]' alt="" />

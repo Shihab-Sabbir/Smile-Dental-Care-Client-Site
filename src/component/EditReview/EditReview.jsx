@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { AuthContext } from '../../UserContext/UserContext';
 
-function EditReview({ title, Reviewtitle, comment, rating,id }) {
+function EditReview({ title, Reviewtitle, comment, rating, id }) {
     const { updateState, setUpdateState } = useContext(AuthContext);
     function handleReview(e) {
         e.preventDefault();
@@ -15,7 +15,7 @@ function EditReview({ title, Reviewtitle, comment, rating,id }) {
             window.alert("Please select a rating");
             return;
         }
-        fetch(`http://localhost:5000/review/${id}`, {
+        fetch(` https://assignment-11-five.vercel.app/review/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

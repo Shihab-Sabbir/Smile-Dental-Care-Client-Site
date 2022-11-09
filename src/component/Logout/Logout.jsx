@@ -7,6 +7,7 @@ import logoutAmin from '../../asset/logout.gif'
 import logoutDarkAmin from '../../asset/logoutDark.gif'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 function Logout() {
     const auth = getAuth(app);
     const { user, setUser, dark } = useContext(AuthContext);
@@ -30,10 +31,13 @@ function Logout() {
     return (
         <div>
             <div className='flex flex-col justify-center items-center'>
+                <Helmet>
+                    <title>Login</title>
+                </Helmet>
                 {!dark ? <img src={logoutAmin} className='w-1/2 lg:w-1/4' alt="" />
                     : <img src={logoutDarkAmin} className='w-1/2 lg:w-1/4' alt="" />}
                 <div>
-                    <button type="button" className="uppercase text-xs font-bold shadow-lg p-2 rounded-md bg-black text-white dark:bg-slate-700" onClick={logOut}>Logout</button>
+                    <button type="button" className="uppercase text-xs font-bold shadow-lg p-2 rounded-md bg-[#00ACBD] text-white " onClick={logOut}>Logout</button>
                 </div>
             </div>
         </div>

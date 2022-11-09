@@ -1,27 +1,41 @@
 .active-class {
     font-weight: bolder;
-    color: red;
+    color: #1ab7c5;
 }
 
 .non-active-class {
-    font-weight: normal;
+    font-weight: bold;
     color: black;
 }
 .dark .non-active-class {
-    font-weight: normal;
-    color: white;
-}
-.dark .non-active-class-drop-down {
-    font-weight: normal;
+    font-weight: bold;
     color: white;
 }
 
-.non-active-class-drop-down {
-    font-weight: normal;
-    color: black;
+.smileNav {
+    background-color: #F3F4F6;
 }
 
-.non-active-class-sm {
-    font-weight: normal;
-    color: black;
+.dark .smileNav {
+    background-color: #0f172a;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #00929f87;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #00929f;
 }

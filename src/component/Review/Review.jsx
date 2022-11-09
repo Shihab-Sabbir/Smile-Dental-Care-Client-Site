@@ -38,7 +38,7 @@ const Review = ({ review }) => {
                     <p className="mt-3 text-base leading-normal text-gray-600 w-full md:w-9/12 xl:w-5/6">{comment}</p>
                     <div className="mt-6 flex justify-start items-center flex-row space-x-2.5">
                         <div>
-                            <img className="rounded-full" src={userImg || "https://i.ibb.co/QcqyrVG/Mask-Group.png"} alt="" />
+                            <img className="rounded-full w-[96px]" src={userImg || "https://i.ibb.co/QcqyrVG/Mask-Group.png"} alt="" />
                         </div>
                         <div className="flex flex-col justify-start items-start space-y-2">
                             <p className="text-base font-medium leading-none text-gray-800">{userName}</p>

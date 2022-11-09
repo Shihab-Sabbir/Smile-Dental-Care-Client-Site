@@ -5,7 +5,7 @@ import Header from '../component/Header/Header';
 function Layout() {
     return (
         <div>
-            <div className='min-h-screen dark:bg-slate-500' >
+            <div className='min-h-screen bg-gray-100 dark:bg-slate-500' >
                 <Header />
                 <Outlet />
             </div>

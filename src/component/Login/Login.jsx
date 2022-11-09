@@ -10,8 +10,8 @@ import { useRef } from 'react';
 import loginAnim from '../../asset/login.gif'
 import loginAnimDark from '../../asset/loginDark.gif'
 import Logout from '../Logout/Logout';
+import { Helmet } from "react-helmet";
 function Login() {
-    const [error, setError] = useState('');
     const { setUser, setLoading, dark, user, loading } = useContext(AuthContext);
     const navigate = useNavigate();
     const auth = getAuth(app);
@@ -23,7 +23,7 @@ function Login() {
 
     const jwtToken = (user) => {
         const uid = user?.uid;
-        fetch('http://localhost:5000/jwt', {
+        fetch(' https://assignment-11-five.vercel.app/jwt', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
@@ -34,7 +34,6 @@ function Login() {
                 localStorage.setItem('assignment-11_Token', data.token)
                 setUser(user);
                 toast.success('Successfully Login');
-                setError('');
                 navigate(from, { replace: true });
             }
 
@@ -56,7 +55,6 @@ function Login() {
             .catch((error) => {
                 const errorMessage = error.message;
                 toast.error(errorMessage);
-                setError(errorMessage);
             });
     }
     function handleThirdPartyLogin(provider) {
@@ -86,6 +84,9 @@ function Login() {
     }
 
     if (loading) {
+        setTimeout(() => {
+            setLoading(false);
+        }, 1500);
         return (
             <div role="status" className='flex justify-center items-center pt-[150px]'>
                 <svg className="inline mr-2 w-14 h-14 text-gray-200 animate-spin dark:text-gray-600 fill-pink-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -99,6 +100,9 @@ function Login() {
 
     return (
         <div className='flex justify-center p-2 items-start pt-3 lg:pt-8 md:min-h-screen dark:bg-slate-500'>
+            <Helmet>
+                <title>Login</title>
+            </Helmet>
             {!user?.uid && <div className='flex lg:flex-row flex-col items-center justify-evenly gap-10'>
                 <div>{!dark ? <img src={loginAnim} alt="" /> : <img src={loginAnimDark} alt="" />}</div>
                 <div className="w-full h-fit max-w-md p-8 space-y-3 rounded-xl bg-gradient-to-r dark:bg-gray-800 dark:text-gray-100 border dark:border-none shadow-lg dark:shadow-xl">
@@ -116,8 +120,7 @@ function Login() {
                             </div>
                         </div>
                         <button className="block w-full p-3 text-center rounded-sm 
-                    bg-amber-500
-                    dark:text-gray-900 dark:bg-violet-400  bg-gradient-to-l">Sign in</button>
+                    bg-[#00ACBD] text-white  bg-gradient-to-l">Sign in</button>
                     </form>
                     <div className="flex items-center pt-4 space-x-1">
                         <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>

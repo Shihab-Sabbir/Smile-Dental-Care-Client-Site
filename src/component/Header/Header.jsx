@@ -3,6 +3,7 @@ import { MdOutlineLightMode, MdOutlineDarkMode } from 'react-icons/md';
 import { Navbar, Dropdown, Avatar } from 'flowbite-react';
 import { AuthContext } from '../../UserContext/UserContext';
 import { Link, NavLink } from 'react-router-dom';
+import logo from '../../asset/logo.png'
 import './Header.css'
 function Header() {
     const { dark, setDark, user } = useContext(AuthContext);
@@ -11,15 +12,18 @@ function Header() {
             <Navbar
                 fluid={true}
                 rounded={false}
+                className='smileNav'
             >
-                <Navbar.Brand href="https://flowbite.com/">
-                    <img
-                        src="https://flowbite.com/docs/images/logo.svg"
-                        className="mr-3 h-6 sm:h-9"
-                        alt="Flowbite Logo"
-                    />
-                    <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                        Flowbite
+                <Navbar.Brand>
+                    <Link to='/'>
+                        <img
+                            src={logo}
+                            className="mx-3 h-9 sm:h-9 brightness-110 cursor-pointer"
+                            alt="Flowbite Logo"
+                        />
+                    </Link>
+                    <span className="self-center whitespace-nowrap text-xl font-[PT Sans Narrow] text-[#00ACBD]">
+                        
                     </span>
                 </Navbar.Brand>
                 <div className="flex gap-2 xl:gap-4 items-center md:order-2">
@@ -61,6 +65,13 @@ function Header() {
                         Home
                     </NavLink>
                     <NavLink
+                        to="/services"
+                        end
+                        className={({ isActive }) => (isActive ? "active-class" : "non-active-class dark:non-active-class")}
+                    >
+                        Services
+                    </NavLink>
+                    <NavLink
                         to="/review"
                         end
                         className={({ isActive }) => (isActive ? "active-class" : "non-active-class dark:non-active-class")}
@@ -73,6 +84,13 @@ function Header() {
                         className={({ isActive }) => (isActive ? "active-class" : "non-active-class dark:non-active-class")}
                     >
                         Add Service
+                    </NavLink>
+                    <NavLink
+                        to="/blog"
+                        end
+                        className={({ isActive }) => (isActive ? "active-class" : "non-active-class dark:non-active-class")}
+                    >
+                        Blog
                     </NavLink>
                     <NavLink
                         to="/login"

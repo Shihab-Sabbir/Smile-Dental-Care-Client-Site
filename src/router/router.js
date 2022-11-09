@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddService from "../component/AddService/AddService";
+import Blog from "../component/Blog/Blog";
 import ErrorPage from "../component/ErrorPage/ErrorPage";
 import Home from "../component/Home/Home";
 import Login from "../component/Login/Login";
@@ -20,10 +21,11 @@ export const router = createBrowserRouter([
             { path: '/login', element: <Login /> },
             { path: '/logout', element: <Logout /> },
             { path: '/register', element: <Register /> },
-            { path: '/addservice', element: <AddService /> },
+            { path: '/addservice', element: <ProtectedRoute><AddService /></ProtectedRoute> },
             { path: '/profile', element: <Profile /> },
+            { path: '/blog', element: <Blog /> },
             { path: '/review', element: <ProtectedRoute><MyReview /></ProtectedRoute> },
-            { path: '/service/details/:id', loader: async ({ params }) => fetch(`http://localhost:5000/services/${params.id}`), element: <ServiceDetails /> },
+            { path: '/service/details/:id', loader: async ({ params }) => fetch(` https://assignment-11-five.vercel.app/services/${params.id}`), element: <ServiceDetails /> },
         ]
     }
 ])

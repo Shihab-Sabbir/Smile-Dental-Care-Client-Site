@@ -1,20 +1,24 @@
 import React, { useContext, useState } from "react";
 import { useEffect } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, Navigate, useLoaderData, useLocation } from "react-router-dom";
 import { AuthContext } from "../../UserContext/UserContext";
 import Review from "../Review/Review";
 import ReviewForm from "../ReviewForm/ReviewForm";
-
+import { Helmet } from "react-helmet";
 const ServiceDetails = () => {
     const [reviews, setReviews] = useState([])
     const service = useLoaderData();
     const { user, updateState } = useContext(AuthContext);
     const { title, price, clinicName, description1, serviceId, description2, descriptionHeader, displayImage, InsideImage, treatmentTime } = service;
+    const location = useLocation();
     useEffect(() => {
-        fetch(`http://localhost:5000/review/${serviceId}`).then(res => res.json()).then(data => setReviews(data)).catch(err => console.log(err))
+        fetch(` https://assignment-11-five.vercel.app/review/${serviceId}`).then(res => res.json()).then(data => setReviews(data)).catch(err => console.log(err))
     }, [updateState])
     return (
         <div>
+            <Helmet>
+                <title>Service Details</title>
+            </Helmet>
             <div className="md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4">
                 <div className="xl:w-2/6 lg:w-2/5 w-80 md:block hidden">
                     <img className="w-full" alt="" src={displayImage} />
@@ -50,7 +54,7 @@ const ServiceDetails = () => {
 						justify-center
 						leading-none
 						text-white
-						bg-gray-800
+						bg-[#00ACBD]
 						w-full
 						py-4
 						hover:bg-gray-700
@@ -103,7 +107,7 @@ const ServiceDetails = () => {
                     </div>
                     <button
                         className="
-						focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800
+						focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#008693]
 						text-base
                         hidden
 						md:flex
@@ -111,10 +115,10 @@ const ServiceDetails = () => {
 						justify-center
 						leading-none
 						text-white
-						bg-gray-800
+						bg-[#00ACBD]
 						w-full
 						py-4
-						hover:bg-gray-700
+						hover:bg-[#1f7178]
                         
 					"
                     >
@@ -133,14 +137,14 @@ const ServiceDetails = () => {
                     </div>
                 </div>
             </div>
-            <div className="lg:ml-[220px]">
+            <div className="lg:ml-[220px] my-10">
                 <p className="p-5 font-bold text-2xl lg:text-3xl">Reviews</p>
-                {reviews?.length === 0 && <p className="px-5 text-start uppercase font-semibold">No view Yet !</p>}
-                {!user?.uid && <p className="font-semibold px-5">Do you want to add review ?<br /> Please <Link to='/login' className="font-bold uppercase text-blue-500">Login</Link> First !</p>}
-                {user?.uid && <label htmlFor="my-modal-3" className="m-5 btn text-xs">Please , add review</label>}
-           </div>
+                {reviews?.length === 0 && <p className="px-5 text-start uppercase font-semibold my-10">No view Yet !</p>}
+                {!user?.uid && <p className="font-semibold px-5">Do you want to add review ?<br /> Please <Link to='/login' state={{ from: location }} replace className="font-bold uppercase text-[#00ACBD]">Login</Link> to add a review !</p>}
+                {user?.uid && <label htmlFor="my-modal-3" className="m-5 btn bg-[#00ACBD] border-white text-xs">Please , add review</label>}
+            </div>
             <ReviewForm title={title} serviceId={serviceId} insideImage={InsideImage} />
-            {reviews?.map(review => <Review key={review._id}  review={review} />)}
+            {reviews?.map(review => <Review key={review._id} review={review} />)}
         </div>
     );
 };

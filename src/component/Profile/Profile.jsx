@@ -2,12 +2,14 @@ import React from 'react'
 import { useContext } from 'react';
 import { AuthContext } from '../../UserContext/UserContext';
 import loadingAnim from '../../asset/loading.gif'
-import profileAnim from '../../asset/profile.gif'
-import profileAnimDark from '../../asset/profileDark.gif'
+import { Helmet } from "react-helmet";
 function Profile() {
     const { user, loading, dark } = useContext(AuthContext);
     return (
         <div className='flex justify-center items-center lg:items-start pt-3 lg:pt-8 lg:min-h-screen dark:bg-slate-500'>
+            <Helmet>
+                <title>Profile</title>
+            </Helmet>
             {loading ||
                 <div className='flex lg:flex-row flex-col items-center justify-evenly gap-10'>
                     <div className="max-w-md p-8 sm:flex sm:space-x-6 dark:bg-gray-900 dark:text-gray-100">

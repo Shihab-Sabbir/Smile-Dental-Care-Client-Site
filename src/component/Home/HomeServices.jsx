@@ -1,39 +1,48 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import { PhotoView } from 'react-photo-view';
 function HomeServices() {
     const [services, setServices] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/services').then(res => res.json()).then(data => setServices(data)).catch(err => console.log(err))
+        fetch(' https://assignment-11-five.vercel.app/services?limit=3').then(res => res.json()).then(data => setServices(data)).catch(err => console.log(err))
     }, [])
 
     return (
-        <div className="bg-gray-100 ">
-            <div className='flex justify-start items-center flex-col'>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="bg-gray-100">
+            <div className='flex justify-start items-center flex-col border-1 shadow-md shadow-[#00adbd24] rounded-xl border-[#00ACBD] my-10'>
+                <p className='focus:outline-none text-4xl lg:text-4xl font-extrabold text-center leading-10 text-gray-800 lg:w-5/12 md:w-9/12 pt-4'>Top Services</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-10">
 
                     {
-                        services?.slice(0, 3).map(service =>
+                        services?.map(service =>
                             <div key={service._id} className=" relative ">
-                                <div className=" relative group">
-                                    <div className=" flex justify-center items-center opacity-0 bg-gradient-to-t from-gray-800 via-gray-800 to-opacity-30 group-hover:opacity-50 absolute top-0 left-0 h-full w-full"></div>
-                                    <img className=" w-[315px] h-[264px] brightness-50" src={service.displayImage} alt="" />
-                                    <div className="absolute top-[15%] left-[33%] font-normal text-center text-xl leading-5 text-gray-100 md:mt-6 mt-4">
-                                        <p className='max-w-[100px]' style={{ lineHeight: '25px' }}>
-                                            {service?.title}
-                                        </p>
-                                        <hr className='border-t-4 mt-4 w-1/2 mx-auto' />
-                                    </div>
-                                    <div className=" absolute bottom-0 p-8 w-full opacity-0 group-hover:opacity-100">
+                                <PhotoView src={service?.displayImage}>
+                                    <div className="relative group w-[315px] h-[264px] cursor-zoom-in" style={{ backgroundImage: `url(${service.displayImage})`, backgroundSize: 'cover', opacity: '1' }}>
+                                        <div className="font-normal text-center text-xl leading-5 text-white md:mt-6 mt-4 hero-overlay">
+                                            <p className='max-w-[100px] 
+                                            mx-auto pt-[60px]
+                                            !brightness-[200%]' style={{ lineHeight: '25px' }}>
+                                                {service?.title}
+                                            </p>
+                                            <hr className='border-t-4 border-white mt-4 w-[25%] mx-auto' />
+                                        </div>
+                                        <div className=" absolute bottom-0 p-8 w-full opacity-0 group-hover:opacity-100">
 
-                                        <button className=" bg-transparent font-medium text-base leading-4 border-2 border-white py-3 pt-[150px] w-full mt-2 text-white hover:scale-105 hover:duration-700 cursor-default">
-                                            <Link className='text-center cursor-pointer' to={`/service/details/${service?._id}`}>
-                                                Quick View
-                                            </Link>
-                                        </button>
-
+                                            <button className=" bg-transparent font-medium text-base leading-4 border-2 border-white py-3 pt-[150px] w-full mt-2 text-white hover:scale-105 hover:duration-700 cursor-zoom-in">
+                                                <Link className='text-center cursor-pointer' to={`/service/details/${service?._id}`}>
+                                                    Quick View
+                                                </Link>
+                                            </button>
+                                        </div>
                                     </div>
+                                </PhotoView>
+                                <div className='w-[315px] pt-2 mb-10'>
+                                    <p className='font-semibold'>${service?.price}</p>
+                                    <p className='font-thin mb-2'>{service?.description1?.slice(0, 80) + '...'}</p>
+                                    <Link to={`/service/details/${service?._id}`}>
+                                        <p className="text-xs text-[#00ACBD]">Details</p>
+                                    </Link>
                                 </div>
                             </div>
                         )
@@ -41,7 +50,7 @@ function HomeServices() {
 
                 </div>
                 <Link to='/services'>
-                    <button className='text-sm uppercase font-bold p-2 px-4 border-2 rounded-lg m-5 hover:bg-black hover:text-gray-300'>View More</button>
+                    <button className='text-sm uppercase font-bold text-[#00ACBD] p-2 px-4 border-2 border-[#00ACBD] rounded-lg m-5 hover:bg-[#00ACBD] hover:text-white'>View More</button>
                 </Link>
             </div>
         </div>

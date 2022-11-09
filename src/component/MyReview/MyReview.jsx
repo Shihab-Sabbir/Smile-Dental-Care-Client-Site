@@ -6,16 +6,22 @@ import { AuthContext } from '../../UserContext/UserContext';
 import { AiFillStar } from 'react-icons/ai'
 import EditReview from '../EditReview/EditReview';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 function MyReview() {
     const [reviews, setReviews] = useState([]);
     const { user, loading, updateState, setUpdateState } = useContext(AuthContext);
     const navigate = useNavigate()
     useEffect(() => {
-        fetch(`http://localhost:5000/review/user/${user?.uid}`, {
+        fetch(` https://assignment-11-five.vercel.app/review/user/${user?.uid}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('assignment-11_Token')}`
             }
         }).then(res => {
+            console.log('status : ', res.status)
+            if (res.status === 401) {
+                window.alert('unauthorized');
+                navigate('/');
+            }
             return res.json()
         }).then(data => setReviews(data));
     }, [updateState, loading])
@@ -23,7 +29,7 @@ function MyReview() {
     const handleDelete = (id) => {
         const confirm = window.confirm('Are You Sure Deleting This Review ?');
         if (confirm) {
-            fetch(`http://localhost:5000/review/${id}`, {
+            fetch(` https://assignment-11-five.vercel.app/review/${id}`, {
                 method: 'DELETE'
             }).then(res => res.json()).then(data => {
                 if (data.deletedCount > 0) { window.alert('succesfully deleted'); setUpdateState(!updateState); }
@@ -33,6 +39,9 @@ function MyReview() {
 
     return (
         <div className='w-full lg:w-[1176px] p-2 mx-auto'>
+            <Helmet>
+                <title>Review</title>
+            </Helmet>
             <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
                 {(reviews?.length > 0) ? <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
