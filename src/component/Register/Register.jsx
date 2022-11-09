@@ -65,9 +65,11 @@ function Register() {
             <Helmet>
                 <title>Register</title>
             </Helmet>
-            <div className='flex lg:flex-row flex-col items-center justify-evenly gap-10'>
-                <div>{!dark ? <img src={regAnim} alt="" /> : <img src={regAnimDark} alt="" />}</div>
-                <div className="w-full h-fit max-w-md p-8 space-y-3 rounded-xl bg-white bg-gradient-to-r dark:bg-gray-800 dark:text-gray-100 border dark:border-none">
+            <div className='flex w-full lg:flex-row flex-col items-center justify-evenly gap-5'>
+                <div>
+                    <img src={regAnim} alt="" />
+                </div>
+                <div className="w-full h-fit max-w-md p-8 space-y-3 mb-5 rounded-xl bg-white bg-gradient-to-r dark:bg-gray-800 dark:text-gray-100 border dark:border-none">
                     <h1 className="text-2xl text-center font-thin">Registration Form</h1>
                     <form noValidate={false} className="space-y-6 ng-untouched ng-pristine ng-valid" onSubmit={handleFormSubmit}>
                         <div className="space-y-1 text-sm">

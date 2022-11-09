@@ -98,7 +98,7 @@ function Login() {
             <Helmet>
                 <title>Login</title>
             </Helmet>
-            {!user?.uid && <div className='flex lg:flex-row flex-col items-center justify-evenly gap-10'>
+            {!user?.uid && <div className='flex lg:flex-row w-full flex-col items-center justify-evenly gap-10'>
                 <div><img src={loginAnim} alt="" /> </div>
                 <div className="w-full h-fit max-w-md p-8 space-y-3 rounded-xl bg-gradient-to-r dark:bg-gray-800 dark:text-gray-100 border dark:border-none shadow-lg dark:shadow-xl">
                     <h1 className="text-2xl text-center font-thin">Login to your account</h1>
