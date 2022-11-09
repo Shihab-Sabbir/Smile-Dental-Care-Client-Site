@@ -5,7 +5,6 @@ import app from '../../firebase/firebase.config';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../UserContext/UserContext';
 import regAnim from '../../asset/register.gif'
-import regAnimDark from '../../asset/registerDark.gif'
 import { Helmet } from "react-helmet";
 function Register() {
     const auth = getAuth(app);
