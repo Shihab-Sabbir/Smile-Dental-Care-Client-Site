@@ -19,15 +19,15 @@ const ServiceDetails = () => {
             <Helmet>
                 <title>Service Details</title>
             </Helmet>
-            <div className="md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4">
+            <div className="md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4 ">
                 <div className="xl:w-2/6 lg:w-2/5 w-80 md:block hidden">
-                    <img className="w-full" alt="" src={displayImage} />
-                    <img className="mt-6 w-full" alt="" src={InsideImage} />
+                    <img className="w-full dark:brightness-50" alt="" src={displayImage} />
+                    <img className="mt-6 w-full dark:brightness-50" alt="" src={InsideImage} />
                 </div>
-                <div className="md:hidden">
+                <div className="md:hidden ">
                     <img className="w-full" alt="" src={displayImage} />
-                    <div className="border-b border-gray-200 pb-6 mt-3">
-                        <p className="text-sm leading-none text-gray-600">Dr. Eddie Harsini</p>
+                    <div className="border-b border-gray-200 pb-6 mt-3 ">
+                        <p className="text-sm leading-none text-gray-600 dark:text-gray-200">Dr. Eddie Harsini</p>
                         <h1
                             className="
 							lg:text-2xl
@@ -37,6 +37,7 @@ const ServiceDetails = () => {
 							leading-7
 							text-gray-800
 							mt-2
+                            dark:text-gray-200
 						"
                         >
                             {title}
@@ -75,7 +76,7 @@ const ServiceDetails = () => {
                 </div>
                 <div className="xl:w-2/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-6">
                     <div className="border-b border-gray-200 pb-6 md:block hidden">
-                        <p className="text-sm leading-none text-gray-600">Dr. Eddie Harsini</p>
+                        <p className="text-sm leading-none text-gray-600 dark:text-gray-200">Dr. Eddie Harsini</p>
                         <h1
                             className="
 							lg:text-2xl
@@ -84,6 +85,7 @@ const ServiceDetails = () => {
 							lg:leading-6
 							leading-7
 							text-gray-800
+                            dark:text-gray-200
 							mt-2
 						"
                         >
@@ -94,15 +96,15 @@ const ServiceDetails = () => {
                         </h1>
                     </div>
                     <div className="py-4 border-b border-gray-200 flex items-center justify-between">
-                        <p className="text-base leading-4 text-gray-800">Treatment Duration</p>
+                        <p className="text-base leading-4 text-gray-800 dark:text-gray-200">Treatment Duration</p>
                         <div className="flex items-center justify-center">
-                            <p className="text-sm font-bold leading-none text-gray-600">{treatmentTime}</p>
+                            <p className="text-sm font-bold leading-none text-gray-600 dark:text-gray-200">{treatmentTime}</p>
                         </div>
                     </div>
                     <div className="py-4 border-b border-gray-200 flex items-center justify-between">
-                        <p className="text-base leading-4 text-gray-800">Success rate</p>
+                        <p className="text-base leading-4 text-gray-800 dark:text-gray-200">Success rate</p>
                         <div className="flex items-center justify-center">
-                            <p className="text-sm leading-none text-green-600 font-bold mr-3">92%</p>
+                            <p className="text-sm leading-none text-green-400 font-bold mr-3">92%</p>
                         </div>
                     </div>
                     <button
@@ -131,9 +133,9 @@ const ServiceDetails = () => {
                         Make Appointment
                     </button>
                     <div>
-                        <p className="text-base lg:leading-relaxed leading-normal text-gray-600 mt-7 text-justify">{description1}</p>
-                        <p className="text-lg font-bold leading-4 mt-7 lg:mt-10 text-gray-600">{descriptionHeader}</p>
-                        <p className="text-base lg:leading-relaxed leading-normal  text-gray-600 mt-7 text-justify">{description2}</p>
+                        <p className="text-base lg:leading-relaxed leading-normal text-gray-600  dark:text-gray-200 mt-7 text-justify">{description1}</p>
+                        <p className="text-lg font-bold leading-4 mt-7 lg:mt-10 text-gray-600 dark:text-gray-200 ">{descriptionHeader}</p>
+                        <p className="text-base lg:leading-relaxed leading-normal  text-gray-600 dark:text-gray-200  mt-7 text-justify">{description2}</p>
                     </div>
                 </div>
             </div>
@@ -141,7 +143,7 @@ const ServiceDetails = () => {
                 <p className="p-5 font-bold text-2xl lg:text-3xl">Reviews</p>
                 {reviews?.length === 0 && <p className="px-5 text-start uppercase font-semibold my-10">No view Yet !</p>}
                 {!user?.uid && <p className="font-semibold px-5">Do you want to add review ?<br /> Please <Link to='/login' state={{ from: location }} replace className="font-bold uppercase text-[#00ACBD]">Login</Link> to add a review !</p>}
-                {user?.uid && <label htmlFor="my-modal-3" className="m-5 btn bg-[#00ACBD] border-white text-xs">Please , add review</label>}
+                {user?.uid && <label htmlFor="my-modal-3" className="m-5 btn bg-[#00ACBD] border-0 text-white dark:hover:bg-gray-700 text-xs">Please , add review</label>}
             </div>
             <ReviewForm title={title} serviceId={serviceId} insideImage={InsideImage} />
             {reviews?.map(review => <Review key={review._id} review={review} />)}

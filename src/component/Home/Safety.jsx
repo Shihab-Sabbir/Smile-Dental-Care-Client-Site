@@ -4,7 +4,7 @@ import img2 from '../../asset/images/2.png'
 import img3 from '../../asset/images/3.png'
 function Safety() {
     return (
-        <div className='py-10 border-2 border-[#03bdce]'>
+        <div className='py-10 border dark:bg-gray-800 border-[#96e9f0] shadow-2xl shadow-[#7be6f01e]'>
             <p className='focus:outline-none text-4xl lg:text-4xl font-extrabold text-center leading-10 text-gray-800 pb-10'>Features</p>
             <div className='grid grid-cols-1 md:grid-cols-3 '>
                 <div className='flex flex-col justify-start items-center p-3'>

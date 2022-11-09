@@ -41,7 +41,7 @@ function ReviewForm({ title, serviceId, insideImage }) {
                 <form className="modal-box relative" onSubmit={handleReview}>
                     <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2" onClick={() => setUpdateState(!updateState)}>✕</label>
                     <h3 className="text-lg font-bold">Review on {title}</h3>
-                    <input required type="text" name="title" id="" className="my-4 w-full input border-0 border-b-2" placeholder='Review title' />
+                    <input required type="text" name="title" id="" className="my-4 w-full input border-0 dark:bg-transparent border-b-2" placeholder='Review title' />
                     <textarea required name='comment' className="textarea textarea-bordered rounded-none w-full" placeholder="Comment"></textarea>
                     <select required name='rating' className="select w-full border-0 rounded-none px-0 my-1" defaultValue='0'>
                         <option disabled value='0'>RATING</option>
@@ -51,7 +51,7 @@ function ReviewForm({ title, serviceId, insideImage }) {
                         <option className='text-3xl text-amber-400 ' value='2'>* *</option>
                         <option className='text-3xl text-amber-400 ' value='1'>*</option>
                     </select>
-                    <button type='submit' className='w-full p-2 border-2 text-sm font-bold bg-black hover:bg-slate-200 text-white hover:text-black shadow-lg'>SUBMIT</button>
+                    <button type='submit' className='w-full p-2 border-2 text-sm font-bold bg-[#00ACBD] hover:bg-slate-200 text-white hover:text-black shadow-lg'>SUBMIT</button>
                 </form>
             </div>
         </div>

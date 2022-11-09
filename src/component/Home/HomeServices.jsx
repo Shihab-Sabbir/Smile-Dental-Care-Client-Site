@@ -9,9 +9,9 @@ function HomeServices() {
     }, [])
 
     return (
-        <div className="bg-gray-100">
-            <div className='flex justify-start items-center flex-col border-1 shadow-md shadow-[#00adbd24] rounded-xl border-[#00ACBD] my-10'>
-                <p className='focus:outline-none text-4xl lg:text-4xl font-extrabold text-center leading-10 text-gray-800 lg:w-5/12 md:w-9/12 pt-4'>Top Services</p>
+        <div className="bg-transparent dark:bg-gray-800">
+            <div className='flex justify-start items-center flex-col border-1 shadow-sm shadow-[#88e2ea86] rounded-xl border-[#00ACBD] my-10'>
+                <p className='focus:outline-none text-4xl lg:text-4xl font-extrabold text-center leading-10 text-gray-800 lg:w-5/12 md:w-9/12 pt-4 dark:text-slate-300'>Top Services</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-10">
 
                     {

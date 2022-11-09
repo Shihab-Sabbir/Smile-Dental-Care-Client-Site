@@ -4,7 +4,6 @@ import { AuthContext } from '../../UserContext/UserContext';
 import { getAuth, signOut } from "firebase/auth";
 import app from '../../firebase/firebase.config';
 import logoutAmin from '../../asset/logout.gif'
-import logoutDarkAmin from '../../asset/logoutDark.gif'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from "react-helmet";
@@ -30,12 +29,11 @@ function Logout() {
 
     return (
         <div>
-            <div className='flex flex-col justify-center items-center'>
+            <div className='flex flex-col justify-center items-center bg-transparent'>
                 <Helmet>
-                    <title>Login</title>
+                    <title>Logout</title>
                 </Helmet>
-                {!dark ? <img src={logoutAmin} className='w-1/2 lg:w-1/4' alt="" />
-                    : <img src={logoutDarkAmin} className='w-1/2 lg:w-1/4' alt="" />}
+                <img src={logoutAmin} className='w-1/2 lg:w-1/4' alt="" />
                 <div>
                     <button type="button" className="uppercase text-xs font-bold shadow-lg p-2 rounded-md bg-[#00ACBD] text-white " onClick={logOut}>Logout</button>
                 </div>

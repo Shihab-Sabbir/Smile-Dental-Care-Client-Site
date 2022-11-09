@@ -7,6 +7,10 @@ import logo from '../../asset/logo.png'
 import './Header.css'
 function Header() {
     const { dark, setDark, user } = useContext(AuthContext);
+    function handleDark() {
+        localStorage.setItem('smile-theme', JSON.stringify(!dark));
+        setDark(!dark);
+    }
     return (
         <div>
             <Navbar
@@ -23,7 +27,7 @@ function Header() {
                         />
                     </Link>
                     <span className="self-center whitespace-nowrap text-xl font-[PT Sans Narrow] text-[#00ACBD]">
-                        
+
                     </span>
                 </Navbar.Brand>
                 <div className="flex gap-2 xl:gap-4 items-center md:order-2">
@@ -52,7 +56,7 @@ function Header() {
                         </Link>
                     </Dropdown>}
                     <div className='border-2 p-1 rounded-md hidden sm:block'>
-                        {dark ? <MdOutlineDarkMode className='text-xl text-white  cursor-pointer' title='click to light mode' onClick={() => setDark(!dark)} /> : <MdOutlineLightMode className='text-xl cursor-pointer' title='click to light mode' onClick={() => setDark(!dark)} />}
+                        {dark ? <MdOutlineDarkMode className='text-xl text-white  cursor-pointer' title='click to light mode' onClick={handleDark} /> : <MdOutlineLightMode className='text-xl cursor-pointer' title='click to light mode' onClick={handleDark} />}
                     </div>
                     <Navbar.Toggle />
                 </div>
@@ -101,7 +105,7 @@ function Header() {
                     </NavLink>
                     <Navbar.Link>
                         <div className='absolute top-[69px] right-[12px] sm:hidden border-2 p-1 rounded-md'>
-                            {dark ? <MdOutlineDarkMode className='text-xl cursor-pointer' title='click to light mode' onClick={() => setDark(!dark)} /> : <MdOutlineLightMode className='text-xl cursor-pointer' title='click to light mode' onClick={() => setDark(!dark)} />}
+                            {dark ? <MdOutlineDarkMode className='text-xl cursor-pointer' title='click to light mode' onClick={handleDark} /> : <MdOutlineLightMode className='text-xl cursor-pointer' title='click to light mode' onClick={handleDark} />}
                         </div>
                     </Navbar.Link>
                 </Navbar.Collapse>

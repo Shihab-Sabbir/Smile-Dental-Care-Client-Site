@@ -61,7 +61,7 @@ function Register() {
             });
     }
     return (
-        <div className='p-2 dark:bg-slate-500 flex justify-center items-start pt-3 lg:pt-8 min-h-screen'>
+        <div className='p-2 bg-transparent flex justify-center items-start pt-3 lg:pt-8 min-h-screen'>
             <Helmet>
                 <title>Register</title>
             </Helmet>

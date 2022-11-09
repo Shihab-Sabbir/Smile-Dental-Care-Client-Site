@@ -2,8 +2,8 @@ import React from 'react'
 import doctor from '../../asset/images/doctor.png'
 function Doctor() {
     return (
-        <div className="relative flex gap-2 lg:flex-row flex-col bg-white mt-10">
-            <img src={doctor} className='mx-auto' alt="Sample Page" role="img" />
+        <div className="relative flex gap-2 lg:flex-row flex-col bg-transparent mt-10">
+            <img src={doctor} className='mx-auto dark:brightness-75' alt="Sample Page" role="img" />
             <div className='p-2'>
                 <p className='text-xl lg:text-3xl mb-4 lg:mb-14'>Dr. Eddie Harsini is dedicated to the profession of dentistry and is passionate about being one of the best in his field.</p>
                 <p className='text-justify lg:leading-relaxed text-lg'>
