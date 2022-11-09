@@ -1,21 +1,28 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../UserContext/UserContext';
 import { Helmet } from "react-helmet";
 import { PhotoView } from 'react-photo-view';
-import loadingImg from '../../asset/loading.gif'
 import { Dropdown, Pagination } from 'flowbite-react';
-function Services() {
+function Search() {
     const [services, setServices] = useState([]);
     const [dataLoading, setDataLoading] = useState(true);
     const [page, setPage] = useState(0);
     const [limit, setLimit] = useState(6);
     const [dataLength, setDataLength] = useState(1);
-    const { loading, setLoading } = useContext(AuthContext);
+    const { loading, setLoading, search } = useContext(AuthContext);
     const pageSize = Math.ceil(dataLength / limit);
+    const navigate = useNavigate();
     useEffect(() => {
-        fetch(`https://assignment-11-five.vercel.app/services/pagination?limit=${limit}&page=${page}`).then(res => res.json()).then(data => { setServices(data.services); setDataLoading(false); setDataLength(parseInt(data?.length)) }).catch(err => console.log(err));
-    }, [page, limit])
+        if (search?.length === 0) {
+            return navigate('/');
+        }
+        fetch(`https://assignment-11-five.vercel.app/search?limit=${limit}&page=${page}&search=${search}`).then(res => res.json()).then(data => { setServices(data.services); setDataLoading(false); setDataLength(parseInt(data?.length)) }).catch(err => console.log(err));
+    }, [page, limit, search])
+
+    if (search?.length === 0) {
+        return navigate('/');
+    }
 
     function onPageChange(e) {
         setPage(e - 1);
@@ -51,6 +58,13 @@ function Services() {
             setPage(0)
             setLimit(parseInt(e.target.innerText));
         }
+    }
+    if (services?.length === 0) {
+        return (
+            <div className='mt-20'>
+                <p className='font-bold text-center uppercase'>sorry , No match Found !</p>
+            </div>
+        )
     }
     return (
         <div className="bg-transparent py-[20px]">
@@ -137,4 +151,4 @@ function Services() {
     )
 }
 
-export default Services;
+export default Search;

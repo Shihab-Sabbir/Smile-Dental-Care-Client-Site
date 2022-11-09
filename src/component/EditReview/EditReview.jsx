@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { AuthContext } from '../../UserContext/UserContext';
-
+import toast from 'react-hot-toast';
 function EditReview({ title, Reviewtitle, comment, rating, id }) {
     const { updateState, setUpdateState } = useContext(AuthContext);
     function handleReview(e) {
@@ -12,7 +12,7 @@ function EditReview({ title, Reviewtitle, comment, rating, id }) {
         const time = new Date().valueOf();
         const review = { Reviewtitle, comment, rating, time };
         if (rating == 0) {
-            window.alert("Please select a rating");
+            toast.error("Please select a rating");
             return;
         }
         fetch(` https://assignment-11-five.vercel.app/review/${id}`, {
@@ -26,7 +26,7 @@ function EditReview({ title, Reviewtitle, comment, rating, id }) {
             .then((data) => {
                 if (data.modifiedCount > 0) {
                     form.reset();
-                    window.alert('review placed succesfully !');
+                    toast.success('review placed succesfully !');
                     setUpdateState(!updateState)
                 }
             })

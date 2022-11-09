@@ -2,11 +2,12 @@ import React, { useContext } from 'react'
 import { MdOutlineLightMode, MdOutlineDarkMode } from 'react-icons/md';
 import { Navbar, Dropdown, Avatar } from 'flowbite-react';
 import { AuthContext } from '../../UserContext/UserContext';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../asset/logo.png'
 import './Header.css'
 function Header() {
-    const { dark, setDark, user } = useContext(AuthContext);
+    const { dark, setDark, user, handleSearch } = useContext(AuthContext);
+    const navigate = useNavigate();
     function handleDark() {
         localStorage.setItem('smile-theme', JSON.stringify(!dark));
         setDark(!dark);
@@ -16,8 +17,7 @@ function Header() {
             <Navbar
                 fluid={true}
                 rounded={false}
-                className='smileNav'
-            >
+                className='smileNav'>
                 <Navbar.Brand>
                     <Link to='/'>
                         <img
@@ -60,7 +60,7 @@ function Header() {
                     </div>
                     <Navbar.Toggle />
                 </div>
-                <Navbar.Collapse style={{ alignItems: 'center' }}>
+                <Navbar.Collapse style={{ alignItems: 'center' }} className='x'>
                     <NavLink
                         to="/"
                         end
@@ -80,7 +80,7 @@ function Header() {
                         end
                         className={({ isActive }) => (isActive ? "active-class" : "non-active-class dark:non-active-class")}
                     >
-                        Reviews
+                        My reviews
                     </NavLink>
                     <NavLink
                         to="/addservice"
@@ -99,10 +99,41 @@ function Header() {
                     <NavLink
                         to="/login"
                         end
-                        className={({ isActive }) => (isActive ? "active-class" : "non-active-class dark:non-active-class")}
+                        className={({ isActive }) => (isActive ? "active-class" : "non-active-class dark:non-active-class ")}
                     >
                         {user?.uid ? "Logout" : "Login"}
                     </NavLink>
+                    <div>
+                        <form action='' className=" flex justify-start items-center relative" onSubmit={(e) => { handleSearch(e); navigate('/search'); }}>
+                            <input type="text" name="search" id="" className="text-sm leading-none text-left text-gray-600 px-4 py-3 w-full border rounded border-gray-300  outline-none" placeholder='Search Service...' required />
+                            <button type='submit' className='flex justify-center items-center'>
+                                <svg
+
+                                    className="absolute right-3 z-10 cursor-pointer"
+                                    width={24}
+                                    height={24}
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M10 17C13.866 17 17 13.866 17 10C17 6.13401 13.866 3 10 3C6.13401 3 3 6.13401 3 10C3 13.866 6.13401 17 10 17Z"
+                                        stroke="#4B5563"
+                                        strokeWidth="1.66667"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                    <path
+                                        d="M21 21L15 15"
+                                        stroke="#4B5563"
+                                        strokeWidth="1.66667"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
                     <Navbar.Link>
                         <div className='absolute top-[69px] right-[12px] sm:hidden border-2 p-1 rounded-md'>
                             {dark ? <MdOutlineDarkMode className='text-xl cursor-pointer' title='click to light mode' onClick={handleDark} /> : <MdOutlineLightMode className='text-xl cursor-pointer' title='click to light mode' onClick={handleDark} />}

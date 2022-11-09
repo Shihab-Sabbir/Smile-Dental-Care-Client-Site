@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { AuthContext } from '../../UserContext/UserContext';
-
+import toast from 'react-hot-toast';
 function ReviewForm({ title, serviceId, insideImage }) {
     const { user, updateState, setUpdateState } = useContext(AuthContext);
     function handleReview(e) {
@@ -12,7 +12,7 @@ function ReviewForm({ title, serviceId, insideImage }) {
         const time = new Date().valueOf();
         const review = { Reviewtitle, comment, rating, user: user?.uid, userName: user?.displayName, userEmail: user?.email, userImg: user?.photoURL, time, serviceId: serviceId, serviceName: title, serviceImage: insideImage };
         if (rating == 0) {
-            window.alert("Please select a rating");
+            toast.error("Please select a rating");
             return;
         }
         fetch(` https://assignment-11-five.vercel.app/review`, {
@@ -26,7 +26,7 @@ function ReviewForm({ title, serviceId, insideImage }) {
             .then((data) => {
                 if (data.acknowledged) {
                     form.reset();
-                    window.alert('review placed succesfully !');
+                    toast.success('review placed succesfully !');
                     setUpdateState(!updateState)
                 }
             })

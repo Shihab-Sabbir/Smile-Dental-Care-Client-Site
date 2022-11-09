@@ -20,6 +20,10 @@
     background-color: #0f172a;
 }
 
+.x ul {
+align-items: center;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 8px;

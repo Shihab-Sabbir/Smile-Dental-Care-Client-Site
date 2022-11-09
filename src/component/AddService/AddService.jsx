@@ -1,6 +1,7 @@
 import React from 'react'
 import addServiceHeader from '../../asset/images/addServiceHeader.png'
 import { Helmet } from "react-helmet";
+import toast from 'react-hot-toast';
 function AddService() {
     const handleServiceAdd = (e) => {
         e.preventDefault();
@@ -29,7 +30,7 @@ function AddService() {
             .then((data) => {
                 if (data.acknowledged) {
                     form.reset();
-                    window.alert('Service added succesfully !')
+                    toast.success('Service added succesfully !')
                 }
             })
             .catch((error) => {
