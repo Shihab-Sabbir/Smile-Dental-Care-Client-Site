@@ -6,10 +6,11 @@ function Footer() {
         <div>
             <footer className="p-4 bg-slate-100 sm:p-6 dark:bg-gray-900">
                 <div className="md:flex md:justify-between">
-                    <div className="mb-6 md:mb-0">
+                    <div className="mb-6 md:mb-0 flex items-center gap-1">
                         <Link to='/' className="flex items-center">
                             <img src={logo} className="mr-3 h-8" alt="Logo" />
                         </Link>
+                        <p className='text-lg text-[#00ACBD]'>Dental Service</p>
                     </div>
                     <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                         <div>
