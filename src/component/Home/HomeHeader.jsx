@@ -37,8 +37,8 @@ function HomeHeader() {
                     </div>
                 </div>
                 <div className="container mx-auto flex justify-center md:-mt-56 -mt-20 sm:-mt-40">
-                    <div className="relative sm:w-2/3 w-11/12 bg-white rounded-lg">
-                        <div className="h-56 sm:h-64 xl:h-80 2xl:h-[400px] max-h-full max-w-full">
+                    <div className="relative sm:w-[55%] w-11/12 bg-white rounded-lg">
+                        <div className="h-56 sm:h-64 xl:h-80 2xl:h-[400px] max-h-full">
                             <Carousel
                                 slideInterval={2000}
                                 leftControl="."

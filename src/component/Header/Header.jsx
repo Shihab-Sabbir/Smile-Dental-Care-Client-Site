@@ -14,7 +14,7 @@ function Header() {
         setDark(!dark);
     }
     return (
-        <div>
+        <div className='max-w-[1530px] mx-auto'>
             <Navbar
                 fluid={true}
                 rounded={false}
@@ -101,7 +101,7 @@ function Header() {
                     >
                         {user?.uid ? "Logout" : "Login"}
                     </NavLink>
-                    <div className='p-2 max-w-[500px] mx-auto hidden lg:block'>
+                    <div className='p-2 max-w-[500px] mx-auto hidden lg:block '>
                         <form action='' className="flex justify-start items-center relative" onSubmit={(e) => { handleSearch(e); navigate('/search'); }}>
                             <input type="text" name="search" id="" className="text-sm leading-none text-left text-gray-600 px-4 py-3 w-full border rounded border-gray-300  outline-none" placeholder='Search Service...' required />
                             <button type='submit' className='flex justify-center items-center'>
@@ -145,14 +145,14 @@ function Header() {
                             >
                                 <path
                                     d="M10 17C13.866 17 17 13.866 17 10C17 6.13401 13.866 3 10 3C6.13401 3 3 6.13401 3 10C3 13.866 6.13401 17 10 17Z"
-                                    stroke="white"
+                                    stroke="#00ACBD"
                                     strokeWidth="2.66667"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                 />
                                 <path
                                     d="M21 21L15 15"
-                                    stroke="white"
+                                    stroke="#00ACBD"
                                     strokeWidth="2.66667"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
