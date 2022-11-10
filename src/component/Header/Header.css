@@ -20,9 +20,6 @@
     background-color: #0f172a;
 }
 
-.x ul {
-align-items: center;
-}
 
 /* width */
 ::-webkit-scrollbar {
@@ -42,4 +39,17 @@ align-items: center;
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #00929f;
+}
+
+@media screen and (min-width: 770px) {
+.x ul {
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .x a {
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
 }
