@@ -107,7 +107,7 @@ function Login() {
     return (
         <div className='flex justify-center p-2 items-start pt-3 lg:pt-8 md:min-h-screen bg-transparent'>
             <Helmet>
-                <title>Login</title>
+                <title>Smile - Login</title>
             </Helmet>
             {!user?.uid && <div className='flex lg:flex-row w-full flex-col items-center justify-evenly gap-10'>
                 <div><img src={loginAnim} alt="" /> </div>

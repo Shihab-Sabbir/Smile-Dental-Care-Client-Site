@@ -17,7 +17,7 @@ const ServiceDetails = () => {
     return (
         <div>
             <Helmet>
-                <title>Service Details</title>
+                <title>Smile - Service Details</title>
             </Helmet>
             <div className="md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4 ">
                 <div className="xl:w-2/6 lg:w-2/5 w-80 md:block hidden">

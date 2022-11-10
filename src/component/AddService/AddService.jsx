@@ -40,7 +40,7 @@ function AddService() {
     return (
         <div className='bg-transparent'>
             <Helmet>
-                <title>Add New Service</title>
+                <title>Smile - Add New Service</title>
             </Helmet>
             <div className='w-full lg:w-[1176px] mx-auto p-2'>
                 <div>

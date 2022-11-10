@@ -82,7 +82,7 @@ function MyReview() {
     return (
         <div className='w-full lg:w-[1176px] p-2 mx-auto pt-10'>
             <Helmet>
-                <title>Review</title>
+                <title>Smile - Review</title>
             </Helmet>
             <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
                 {(reviews?.length > 0) ?

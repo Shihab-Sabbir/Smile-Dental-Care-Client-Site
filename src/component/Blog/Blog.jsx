@@ -11,7 +11,7 @@ const Blog = () => {
     return (
         <div className=" 2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6 py-9 px-4">
             <Helmet>
-                <title>Blog</title>
+                <title>Smile - Blog</title>
             </Helmet>
             <h2 className=" font-semibold lg:text-4xl text-3xl lg:leading-9 md:leading-7 leading-9 text-gray-800 dark:text-slate-200">Blog Section</h2>
             <div className="mt-4 flex md:justify-between md:items-start md:flex-row flex-col justify-start items-start">

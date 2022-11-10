@@ -62,7 +62,7 @@ function Register() {
     return (
         <div className='p-2 bg-transparent flex justify-center items-start pt-3 lg:pt-8 min-h-screen'>
             <Helmet>
-                <title>Register</title>
+                <title>Smile - Register</title>
             </Helmet>
             <div className='flex w-full lg:flex-row flex-col items-center justify-evenly gap-5'>
                 <div>

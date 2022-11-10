@@ -28,7 +28,7 @@ function UserContext({ children }) {
     function handleSearch(e) {
         e.preventDefault();
         setSearch(e.target.search.value);
-        
+
     }
 
     return (

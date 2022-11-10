@@ -55,7 +55,7 @@ function Services() {
     return (
         <div className="bg-transparent py-[20px]">
             <Helmet>
-                <title>Explore Services</title>
+                <title>Smile - Explore Services</title>
             </Helmet>
             <div className="w-full lg:w-[1200px] mx-auto container">
                 <p className='focus:outline-none text-4xl lg:text-4xl font-extrabold text-center leading-10 text-gray-800 lg:w-5/12 md:w-9/12 mx-auto dark:text-slate-300'>Services <span className='text-sm'> of Dr. Eddie Harsini</span> </p>

@@ -31,7 +31,7 @@ function Logout() {
         <div>
             <div className='flex flex-col justify-center items-center bg-transparent'>
                 <Helmet>
-                    <title>Logout</title>
+                    <title>Smile - Logout</title>
                 </Helmet>
                 <img src={logoutAmin} className='w-1/2' alt="" />
                 <div>
