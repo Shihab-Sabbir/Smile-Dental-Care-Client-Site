@@ -28,14 +28,20 @@ function Home() {
         )
     }
     return (
-        <div className='w-full lg:w-[1200px] mx-auto container lg:px-0 px-1'>
-            <HomeHeader />
-            <HomeServices />
-            <HealthAdvice />
-            <div className='pb-20'>
-                <Safety />
+        <>
+            <div className='pt-2 pb-4 flex items-center w-full'>
+                <div className="w-[12%] min-w-[100px] flex justify-center items-center bg-[#00adbd44] text-white font-mono h-[40px]"> Smile</div>
+                <marquee behavior="" direction="">All services are provided by Dr. Eddie Harsini. He is dedicated to the profession of dentistry and is passionate about being one of the best in his field.</marquee>
             </div>
-        </div>
+            <div className='w-full lg:w-[1200px] mx-auto container lg:px-0 px-1'>
+                <HomeHeader />
+                <HomeServices />
+                <HealthAdvice />
+                <div className='pb-20'>
+                    <Safety />
+                </div>
+            </div>
+        </>
     )
 }
 

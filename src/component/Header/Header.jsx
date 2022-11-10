@@ -75,20 +75,20 @@ function Header() {
                     >
                         Services
                     </NavLink>
-                    <NavLink
+                    {user !== null && <NavLink
                         to="/review"
                         end
                         className={({ isActive }) => (isActive ? "active-class" : "non-active-class dark:non-active-class")}
                     >
                         My reviews
-                    </NavLink>
-                    <NavLink
+                    </NavLink>}
+                    {user !== null && <NavLink
                         to="/addservice"
                         end
                         className={({ isActive }) => (isActive ? "active-class" : "non-active-class dark:non-active-class")}
                     >
                         Add Service
-                    </NavLink>
+                    </NavLink>}
                     <NavLink
                         to="/blog"
                         end

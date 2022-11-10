@@ -12,7 +12,7 @@ function UserContext({ children }) {
     const [updateState, setUpdateState] = useState(false);
     const [search, setSearch] = useState('');
     const auth = getAuth(app);
-    const userinfo = { dark, setDark, user, setUser, loading, setLoading, updateState, setUpdateState, handleSearch, search };
+    const userinfo = { dark, setDark, user, setUser, loading, setLoading, updateState, setUpdateState, handleSearch, search, auth };
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser) {

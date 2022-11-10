@@ -26,7 +26,7 @@ function EditReview({ title, Reviewtitle, comment, rating, id }) {
             .then((data) => {
                 if (data.modifiedCount > 0) {
                     form.reset();
-                    toast.success('review placed succesfully !');
+                    toast.success('Review updated succesfully !');
                     setUpdateState(!updateState)
                 }
             })

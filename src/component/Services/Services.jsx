@@ -58,13 +58,14 @@ function Services() {
                 <title>Explore Services</title>
             </Helmet>
             <div className="w-full lg:w-[1200px] mx-auto container">
-                <div className='my-5 flex justify-end mr-5'>
+                <p className='focus:outline-none text-4xl lg:text-4xl font-extrabold text-center leading-10 text-gray-800 lg:w-5/12 md:w-9/12 mx-auto dark:text-slate-300'>Services <span className='text-sm'> of Dr. Eddie Harsini</span> </p>
+                <div className='my-5 flex justify-between mx-5'>
+                    <p>Showing <span className='font-bold'>{services?.length}</span> out of <spna className='font-bold'>{dataLength}</spna></p>
                     <Dropdown
                         label="Select Page Size"
                         inline={true}
                         dismissOnClick={true}
-                        placement="right-start"
-                    >
+                        placement="right-start">
                         <Dropdown.Item value='1' >
                             <p className='min-h-full min-w-full p-3 px-5 border border-[#00ACBD] text-[#00ACBD]  rounded-lg text-center' onClick={(e) => onClick(e)}>1</p>
                         </Dropdown.Item>

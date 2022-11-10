@@ -4,13 +4,11 @@ function HealthAdvice() {
 
     return (
         <div className="pb-16" style={{ fontFamily: '"Lato", sans-serif' }}>
-            {/* Code block starts */}
-            <dh-component>
                 <section className="max-w-8xl mx-auto container bg-transparent pt-16 ">
                     <div>
                         <div role="contentinfo" className="flex items-center flex-col px-4">
-                            <p tabIndex={0} className="focus:outline-none uppercase text-sm text-center text-gray-600 dark:text-gray-400 leading-4 dark:text-gray-500">Health advice section</p>
-                            <h1 tabIndex={0} className="focus:outline-none text-4xl lg:text-4xl font-extrabold text-center leading-10 text-gray-800 dark:text-gray-500 lg:w-5/12 md:w-9/12 pt-4 dark:text-gray-500">Frequently Asked Questions</h1>
+                            <p tabIndex={0} className="focus:outline-none uppercase text-sm text-center text-gray-600 dark:text-gray-400 leading-4 ">Health advice section</p>
+                            <h1 tabIndex={0} className="focus:outline-none text-4xl lg:text-4xl font-extrabold text-center leading-10 text-gray-800 dark:text-gray-500 lg:w-5/12 md:w-9/12 pt-4 ">Frequently Asked Questions</h1>
                         </div>
                         <div tabIndex={0} aria-label="group of cards" className="focus:outline-none mt-20 flex flex-wrap justify-center gap-10 px-4">
                             <div tabIndex={0} aria-label="card 1" className="focus:outline-none flex sm:w-full md:w-5/12 pb-20 ">
@@ -64,8 +62,6 @@ function HealthAdvice() {
                         </div>
                     </div>
                 </section>
-            </dh-component>
-            {/* Code block ends */}
         </div>
 
     )

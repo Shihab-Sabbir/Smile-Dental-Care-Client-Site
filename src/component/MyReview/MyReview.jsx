@@ -10,21 +10,29 @@ import { Helmet } from "react-helmet";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import toast from 'react-hot-toast';
+import { signOut } from 'firebase/auth';
 function MyReview() {
     const [reviews, setReviews] = useState([]);
     const [dataLoading, setDataLoading] = useState(true);
-    const { user, loading, updateState, setUpdateState } = useContext(AuthContext);
+    const { user, loading, updateState, setUpdateState, auth, setUser } = useContext(AuthContext);
     const navigate = useNavigate()
     useEffect(() => {
-        fetch(` https://assignment-11-five.vercel.app/review/user/${user?.uid}`, {
+        fetch(`https://assignment-11-five.vercel.app/review/user/${user?.uid}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('assignment-11_Token')}`
             }
         }).then(res => {
             console.log('status : ', res.status)
-            if (res.status === 401) {
-                toast.error('unauthorized');
-                navigate('/');
+            if (res.status === 401 || res.status === 403) {
+                toast.error(res.statusText);
+                signOut(auth).then(() => {
+                    setUser(null);
+                    toast.success('Logged out');
+                    localStorage.removeItem('assignment-11_Token')
+                    navigate('/login');
+                }).catch((error) => {
+                    console.log(error)
+                });
             }
             return res.json()
         }).then(data => { setReviews(data); setDataLoading(false) });
@@ -82,7 +90,7 @@ function MyReview() {
                         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" className="py-3 text-[#00ACBD]  px-6 text-center">
-
+                                    Delete Review
                                 </th>
                                 <th scope="col" className="py-3 text-[#00ACBD] px-6 text-center">
                                     Service
@@ -97,7 +105,7 @@ function MyReview() {
                                     Post Date
                                 </th>
                                 <th scope="col" className="py-3 text-[#00ACBD] px-2 text-center">
-                                    Action
+                                    Edit Review
                                 </th>
                             </tr>
                         </thead>
