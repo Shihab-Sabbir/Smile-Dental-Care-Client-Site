@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
-
+import userFakeImg from '../../asset/images/userImgPlaceHolder.png'
 const Review = ({ review }) => {
     const [menu, setMenu] = useState(true);
-    const { Reviewtitle, comment, rating, userName, email, userImg, time } = review;
+    const { Reviewtitle, comment, rating, userName, userEmail, userImg, time } = review;
     const date = new Date(time);
     const dateFormat = date.getHours() + ":" + date.getMinutes() + ", " + date.toDateString();
     const star = useRef();
     useEffect(() => {
         star.current.children[parseInt(rating) - 1].checked = true;
     }, [])
-
     return (
         <div className="py-4 px-4 md:px-6 2xl:px-0 2xl:container 2xl:mx-auto flex justify-center items-center">
             <div className="w-full flex justify-start items-start flex-col bg-transparent border border-[#00ACBD] p-8 lg:w-[1040px] mx-auto">
@@ -38,11 +37,11 @@ const Review = ({ review }) => {
                     <p className="mt-3 text-base leading-normal text-gray-600 w-full md:w-9/12 xl:w-5/6 dark:text-gray-300">{comment}</p>
                     <div className="mt-6 flex justify-start items-center flex-row space-x-2.5">
                         <div>
-                            <img className="rounded-full w-[96px]" src={userImg || "https://i.ibb.co/QcqyrVG/Mask-Group.png"} alt="" />
+                            <img className="rounded-full w-[96px]" src={userImg || userFakeImg} alt="" />
                         </div>
                         <div className="flex flex-col justify-start items-start space-y-2 ">
                             <p className="text-base font-medium leading-none text-gray-800 dark:text-gray-300">{userName}</p>
-                            <p className="text-base font-medium leading-none text-gray-800 dark:text-gray-300">{email || "No Email Found"}</p>
+                            <p className="text-base font-medium leading-none text-gray-800 dark:text-gray-300">{userEmail || "No Email Found"}</p>
                             <p className="text-sm leading-none text-gray-600 dark:text-gray-300">{dateFormat}</p>
                         </div>
                     </div>

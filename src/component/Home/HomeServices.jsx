@@ -50,7 +50,7 @@ function HomeServices() {
 
                 </div>
                 <Link to='/services'>
-                    <button className='text-sm uppercase font-bold text-[#00ACBD] p-2 px-4 border-2 border-[#00ACBD] rounded-lg m-5 hover:bg-[#00ACBD] hover:text-white'>View More</button>
+                    <button className='text-sm uppercase font-bold text-[#00ACBD] p-2 px-4 border-2 border-[#00ACBD] rounded-lg m-5 hover:bg-[#00ACBD] hover:text-white'>See All</button>
                 </Link>
             </div>
         </div>

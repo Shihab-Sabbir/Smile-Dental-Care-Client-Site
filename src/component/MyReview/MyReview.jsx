@@ -22,7 +22,6 @@ function MyReview() {
                 authorization: `Bearer ${localStorage.getItem('assignment-11_Token')}`
             }
         }).then(res => {
-            console.log('status : ', res.status)
             if (res.status === 401 || res.status === 403) {
                 toast.error(res.statusText);
                 signOut(auth).then(() => {

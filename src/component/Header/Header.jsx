@@ -4,6 +4,7 @@ import { Navbar, Dropdown, Avatar } from 'flowbite-react';
 import { AuthContext } from '../../UserContext/UserContext';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../asset/logo.png'
+import userFakeImg from '../../asset/images/userImgPlaceHolder.png'
 import './Header.css'
 function Header() {
     const { dark, setDark, user, handleSearch } = useContext(AuthContext);
@@ -31,7 +32,7 @@ function Header() {
                     {user?.uid != null && <Dropdown
                         arrowIcon={false}
                         inline={true}
-                        label={<Avatar alt="User settings" img={user?.photoURL} rounded={true} />}
+                        label={<Avatar alt="User settings" img={user?.photoURL || userFakeImg} rounded={true} />}
                     >
                         <Dropdown.Header>
                             <span className="block text-sm">

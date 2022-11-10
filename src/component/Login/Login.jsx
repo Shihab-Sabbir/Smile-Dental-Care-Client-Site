@@ -21,6 +21,7 @@ function Login() {
     const userEmail = useRef();
 
     const jwtToken = (user) => {
+        setLoading(true)
         const uid = user?.uid;
         fetch(' https://assignment-11-five.vercel.app/jwt', {
             method: 'POST',
@@ -32,10 +33,14 @@ function Login() {
             if (data.token) {
                 localStorage.setItem('assignment-11_Token', data.token)
                 setUser(user);
+                setLoading(false);
                 toast.success('Successfully Login');
                 navigate(from, { replace: true });
             }
-
+            else {
+                toast.error('Login Failed');
+                setLoading(false);
+            }
         })
     }
 
@@ -44,12 +49,11 @@ function Login() {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-
+        setLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                setLoading(true);
-                jwtToken(user)
+                jwtToken(user);
             })
             .catch((error) => {
                 const errorMessage = error.message;
