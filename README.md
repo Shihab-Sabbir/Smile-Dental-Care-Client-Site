@@ -1,8 +1,8 @@
 # Smile Dental Service
 
-To Explore Live Site please Click , [Live Here](https://assignment-11-7d832.web.app)
+To Explore Live Site please Click , [Live Here](https://smile-dental-care.netlify.app/)
 
-> ###### Site is Deployed in Firebase.com
+> ###### Site is Deployed in Netlify.com
 
 ## Features
 
