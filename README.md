@@ -6,7 +6,7 @@ To Explore Live Site please Click , [Live Here](https://smile-dental-care.netlif
 
 ## Features
 
-- Manual and third-party (google and github) login using firebase aunthentication.
+- Manual and third-party (google and github) login using firebase authentication.
 - User password Retriving in case of nessecity.
 - Image zoom view.
 - Jwt verification support.
